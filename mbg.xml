@@ -1,0 +1,36 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="simple" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--配置数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/guigu_ssm"
+                        userId="root"
+                        password="123456"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--指定Javabean的生成位置-->
+        <javaModelGenerator targetPackage="com.atguigu.bean" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--指定SQL映射文件生成的位置-->
+        <sqlMapGenerator targetPackage="com.atguigu.dao" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--指定接口生成的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.atguigu.dao" targetProject="./src/main/java"/>
+
+        <!--table指定每个表的生成策略-->
+        <table tableName="tbl_emp" domainObjectName="Employee" />
+        <table tableName="tbl_dept" domainObjectName="Department"/>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--映射文件有顺序,如:properties?, settings?, typeAliases?, typeHandlers?, objectFactory?,
+                   objectWrapperFactory?, reflectorFactory?, plugins?, environments?, databaseIdProvider?, mappers?)
+-->
+<configuration>
+
+    <settings>
+        <!--是否开启驼峰命名法-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!--typeAliases:别名处理器:可以为我们的java类型取别名-->
+    <typeAliases>
+        <!--
+            typeAlias:为某个java类型起别名 (别名不区分大小写)
+            type:指定要起别名的类型全类名;默认别名就是类名小写;employee
+            alias:指定新的别名
+        -->
+        <!--        <typeAlias type="com.atguigu.Employee" alias="employee"/>-->
+        <!--package:为某个包下的所有类批量起别名
+            name:指定包名(为当前包以及下面所有后代包的每一个类都起一个默认别名(类名小写))
+        -->
+        <package name="com.atguigu.bean"/>
+        <!--批量起别名的情况下,使用@Alias注解为某个类指定新的别名-->
+    </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--分页参数合理化-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+</configuration>
